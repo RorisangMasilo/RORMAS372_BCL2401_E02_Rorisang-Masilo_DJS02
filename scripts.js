@@ -22,10 +22,11 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  if (dividend === "" || divider === "") {
-    result.innerText =
-      "Division not performed. Both values are required in inputs. Try again";
-  } else {
-    result.innerText = dividend / divider;
+  if (isNaN(dividend) || isNaN(divider)) {
+    console.error("Error: Invalid number provided", new Error().stack);
+    document.write("Something critical went wrong. Please reload the page");
+    return;
   }
+
+  result.innerText = Math.floor(dividend / divider);
 });
